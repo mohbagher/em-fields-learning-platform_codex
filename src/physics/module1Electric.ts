@@ -1,4 +1,4 @@
-import { EPSILON_0, K_E } from "../utils/constants";
+import { K_E } from "../utils/constants";
 import { ElectricFieldResult, PointCharge, Vector3D } from "../types";
 
 const MIN_DISTANCE = 1e-3;

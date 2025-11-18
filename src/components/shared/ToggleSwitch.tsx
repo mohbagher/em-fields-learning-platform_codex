@@ -1,5 +1,4 @@
 // src/components/shared/ToggleSwitch.tsx
-import React from "react";
 
 interface ToggleSwitchProps {
   label: string;

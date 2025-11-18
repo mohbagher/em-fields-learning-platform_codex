@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import {
-  coulombForceVector,
-  electricFieldAtPoint,
-  generateFieldLine
-} from "../../../physics/module1Electric";
-import { PointCharge, Vector3D } from "../../../types";
+import { coulombForceVector, electricFieldAtPoint, generateFieldLine } from "../../../physics/module1Electric";
+import { PointCharge } from "../../../types";
 import ToggleSwitch from "../../shared/ToggleSwitch";
 
 /**
@@ -12,7 +8,7 @@ import ToggleSwitch from "../../shared/ToggleSwitch";
  * TODO: Add drag/drop and UI controls for charge magnitude.
  */
 const CoulombPlayground: React.FC = () => {
-  const [charges, setCharges] = useState<PointCharge[]>([
+  const [charges] = useState<PointCharge[]>([
     { q: 1, position: { x: -1, y: 0, z: 0 } },
     { q: -1, position: { x: 1, y: 0, z: 0 } }
   ]);
@@ -23,17 +19,6 @@ const CoulombPlayground: React.FC = () => {
     () => ({ xMin: -3, xMax: 3, yMin: -2, yMax: 2 }),
     []
   );
-
-  /**
-   * Simple helper to move a charge (for future drag interactions)
-   */
-  const updateChargePosition = (index: number, position: Vector3D) => {
-    setCharges((prev) => {
-      const next = [...prev];
-      next[index] = { ...next[index], position };
-      return next;
-    });
-  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
